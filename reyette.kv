@@ -1,0 +1,65 @@
+MainLayout:
+
+<MainLayout>:
+    orientation: "vertical"
+    padding: 15
+    spacing: 10
+
+    Label:
+        text: "Reyette Downloader"
+        font_size: "24sp"
+        size_hint_y: None
+        height: "50dp"
+
+    TextInput:
+        id: url
+        hint_text: "Masukkan URL YouTube"
+        multiline: False
+        size_hint_y: None
+        height: "45dp"
+
+    BoxLayout:
+        size_hint_y: None
+        height: "50dp"
+        spacing: 10
+
+        Button:
+            text: "Ambil Kualitas"
+            on_release: root.get_formats()
+
+        Spinner:
+            id: quality
+            text: "Pilih"
+            values: []
+
+    BoxLayout:
+        size_hint_y: None
+        height: "50dp"
+        spacing: 10
+
+        Button:
+            text: "MP3"
+            on_release: root.download_mp3()
+
+        Button:
+            text: "MP4"
+            on_release: root.download_mp4()
+
+        Button:
+            text: "Clear Log"
+            on_release: root.clear_log()
+
+    Label:
+        text: "Log Terminal"
+        size_hint_y: None
+        height: "30dp"
+
+    ScrollView:
+
+        TextInput:
+            id: log
+            readonly: True
+            multiline: True
+            font_size: "14sp"
+            size_hint_y: None
+            height: max(self.minimum_height, self.parent.height)
